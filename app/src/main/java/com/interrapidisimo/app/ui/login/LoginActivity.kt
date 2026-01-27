@@ -1,6 +1,5 @@
 package com.interrapidisimo.app.ui.login
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -10,7 +9,6 @@ import com.interrapidisimo.app.data.api.LoginService
 import com.interrapidisimo.app.data.api.RetrofitClient
 import com.interrapidisimo.app.data.db.AppDatabase
 import com.interrapidisimo.app.data.db.entity.UserEntity
-import com.interrapidisimo.app.data.repository.LoginRepository
 import com.interrapidisimo.app.databinding.ActivityLoginBinding
 import com.interrapidisimo.app.domain.model.login.LoginRequest
 import com.interrapidisimo.app.security.login.LoginManager
@@ -58,8 +56,7 @@ class LoginActivity: ComponentActivity() {
         lifecycleScope.launch {
             try {
                 val loginService = RetrofitClient.create(LoginService::class.java)
-                val loginRepository = LoginRepository(loginService)
-                val loginManager = LoginManager(loginRepository)
+                val loginManager = LoginManager(loginService)
 
                 val request = LoginRequest(
                     Mac = "",
@@ -68,8 +65,6 @@ class LoginActivity: ComponentActivity() {
                     Path = "",
                     Usuario = replaceData(userInput)
                 )
-
-                println("---REQUEST____: ${request}")
 
                 var result = loginManager.login(request)
 
@@ -83,9 +78,6 @@ class LoginActivity: ComponentActivity() {
                             nombre = res.nombre ?: "N/A"
                         )
                     )
-
-                    val saved = db.userDao().getUser()
-                    println("saved: ${saved}")
 
                     startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
                     finish()
