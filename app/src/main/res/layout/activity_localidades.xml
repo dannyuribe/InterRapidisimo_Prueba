@@ -5,6 +5,14 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
+    <TextView
+        android:text="Localidades"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerLocalidades"
         android:layout_width="match_parent"
