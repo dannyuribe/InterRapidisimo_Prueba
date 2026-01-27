@@ -47,5 +47,3 @@ Esta es una **aplicación móvil Android desarrollada en Kotlin**, creada como p
 - Código documentado y estructurado siguiendo principios SOLID.
 
 ---
-
-## 🛠️ Estructura del proyecto
