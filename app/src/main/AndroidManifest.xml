@@ -25,7 +25,8 @@
         </activity>
         <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".ui.table.TableActivity" />
-        <activity android:name=".ui.localidades.LocalidadesActivity" />
+        <activity android:name=".ui.localidades.LocalidadesActivity"/>
+        <activity android:name=".ui.login.LoginActivity" />
     </application>
 
 </manifest>
