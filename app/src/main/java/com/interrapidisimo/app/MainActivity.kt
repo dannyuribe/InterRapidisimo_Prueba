@@ -45,9 +45,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-
-
-
     private fun handleVersionMessage(message: String){
         when{
             message.contains("INFERIOR") -> {
