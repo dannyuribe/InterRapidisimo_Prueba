@@ -1,18 +1,21 @@
 package com.interrapidisimo.app.login
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.interrapidisimo.app.login.domain.LoginState
 import com.interrapidisimo.app.login.domain.LoginUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LoginViewModel(
+@HiltViewModel
+class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase
 ): ViewModel() {
-    private val _state = MutableLiveData<LoginState>()
-    val state: LiveData<LoginState> = _state
+    private val _state = MutableStateFlow<LoginState>(LoginState.Loading)
+    val state = _state.asStateFlow()
 
     fun login(user: String, pass: String){
         viewModelScope.launch {

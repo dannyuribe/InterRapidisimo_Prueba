@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -76,4 +77,9 @@ dependencies {
     implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
 
     implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+
 }

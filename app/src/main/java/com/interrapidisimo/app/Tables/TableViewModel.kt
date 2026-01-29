@@ -4,11 +4,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.interrapidisimo.app.Tables.data.repository.TableRepository
 import com.interrapidisimo.app.Tables.domain.TablesState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TableViewModel(
+@HiltViewModel
+class TableViewModel @Inject constructor(
     private val repository: TableRepository
 ): ViewModel() {
     private val _state = MutableStateFlow<TablesState>(TablesState.Loading)
