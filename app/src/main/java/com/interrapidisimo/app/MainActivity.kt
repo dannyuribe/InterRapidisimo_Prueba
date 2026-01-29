@@ -1,15 +1,15 @@
 package com.interrapidisimo.app
 
 import android.content.Intent
-import com.interrapidisimo.app.data.api.RetrofitClient
+import com.interrapidisimo.app.core.network.RetrofitClient
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.lifecycleScope
-import com.interrapidisimo.app.data.api.VersionService
-import com.interrapidisimo.app.data.repository.VersionRepository
-import com.interrapidisimo.app.security.version.VersionManager
-import com.interrapidisimo.app.ui.login.LoginActivity
+import com.interrapidisimo.app.version.data.api.VersionService
+import com.interrapidisimo.app.version.data.repository.VersionRepository
+import com.interrapidisimo.app.version.domain.VersionManager
+import com.interrapidisimo.app.login.ui.LoginActivity
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
