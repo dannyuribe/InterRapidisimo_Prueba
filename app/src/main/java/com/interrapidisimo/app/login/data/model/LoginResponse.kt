@@ -1,52 +1,53 @@
 package com.interrapidisimo.app.login.data.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class LoginResponse(
 
-    @SerializedName("Usuario")
+    @Json(name = "Usuario")
     val usuario: String?,
 
-    @SerializedName("Identificacion")
+    @Json(name = "Identificacion")
     val identificacion: String?,
 
-    @SerializedName("Nombre")
+    @Json(name = "Nombre")
     val nombre: String?,
 
-    @SerializedName("Apellido1")
+    @Json(name = "Apellido1")
     val apellido1: String?,
 
-    @SerializedName("Apellido2")
+    @Json(name = "Apellido2")
     val apellido2: String?,
 
-    @SerializedName("Cargo")
+    @Json(name = "Cargo")
     val cargo: String?,
 
-    @SerializedName("Aplicaciones")
-    val aplicaciones: Any?,   // viene null o lista (luego lo tipamos)
+    @Json(name = "Aplicaciones")
+    val aplicaciones: List<Any>?,
 
-    @SerializedName("Ubicaciones")
-    val ubicaciones: Any?,
+    @Json(name = "Ubicaciones")
+    val ubicaciones: List<Any>?,
 
-    @SerializedName("MensajeResultado")
+    @Json(name = "MensajeResultado")
     val mensajeResultado: Int?,
 
-    @SerializedName("IdLocalidad")
+    @Json(name = "IdLocalidad")
     val idLocalidad: String?,
 
-    @SerializedName("NombreLocalidad")
+    @Json(name = "NombreLocalidad")
     val nombreLocalidad: String?,
 
-    @SerializedName("NomRol")
+    @Json(name = "NomRol")
     val nomRol: String?,
 
-    @SerializedName("IdRol")
+    @Json(name = "IdRol")
     val idRol: String?,
 
-    @SerializedName("TokenJWT")
+    @Json(name = "TokenJWT")
     val tokenJWT: String?,
 
-    @SerializedName("ModulosApp")
-    val modulosApp: Any?
+    @Json(name = "ModulosApp")
+    val modulosApp: List<Any>?
 )
-

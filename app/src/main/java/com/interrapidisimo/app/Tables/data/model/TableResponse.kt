@@ -1,12 +1,15 @@
 package com.interrapidisimo.app.Tables.data.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class TableResponse(
-    @SerializedName("NombreTabla")
+    @Json(name = "NombreTabla")
         val nombreTabla: String?,
-    @SerializedName("Tipo")
-        val tipo: String?,
-    @SerializedName("Descripcion")
+    @Json(name = "Tipo")
+    val tipo: String?,
+
+    @Json(name = "Descripcion")
         val descripcion: String?
 )

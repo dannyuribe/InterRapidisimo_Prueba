@@ -1,12 +1,26 @@
 package com.interrapidisimo.app.localidades.data.model
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class LocalidadResponse(
-    @SerializedName("IdLocalidad") val id: String,
-    @SerializedName("Nombre") val nombre: String,
-    @SerializedName("NombreCorto") val nombreCorto: String?,
-    @SerializedName("NombreAncestroPGrado") val nombreAncestroPGrado: String?,
-    @SerializedName("NombreCompleto") val nombreCompleto: String,
-    @SerializedName("AbreviacionCiudad") val abreviacion: String
+
+    @Json(name = "IdLocalidad")
+    val id: String,
+
+    @Json(name = "Nombre")
+    val nombre: String,
+
+    @Json(name = "NombreCorto")
+    val nombreCorto: String?,
+
+    @Json(name = "NombreAncestroPGrado")
+    val nombreAncestroPGrado: String?,
+
+    @Json(name = "NombreCompleto")
+    val nombreCompleto: String,
+
+    @Json(name = "AbreviacionCiudad")
+    val abreviacion: String
 )

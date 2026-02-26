@@ -1,8 +1,9 @@
 package com.interrapidisimo.app.version.data.repository
 
 import com.interrapidisimo.app.version.data.api.VersionService
+import javax.inject.Inject
 
-class VersionRepository(
+class VersionRepository @Inject constructor(
     private val service: VersionService
 ) {
     suspend fun getRemoteVersion(): Result<String>{

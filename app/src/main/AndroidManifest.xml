@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InterRapidApp">
         <activity
-            android:name=".MainActivity"
+            android:name=".version.ui.VersionActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.InterRapidApp">

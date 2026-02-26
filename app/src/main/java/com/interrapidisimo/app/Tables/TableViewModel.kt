@@ -5,32 +5,41 @@ import androidx.lifecycle.viewModelScope
 import com.interrapidisimo.app.Tables.data.repository.TableRepository
 import com.interrapidisimo.app.Tables.domain.TablesState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class TableViewModel @Inject constructor(
     private val repository: TableRepository
-): ViewModel() {
+) : ViewModel() {
+
     private val _state = MutableStateFlow<TablesState>(TablesState.Loading)
     val state = _state.asStateFlow()
 
-    fun sincronizar(user: String) {
-        _state.value = TablesState.Loading
+    private var syncJob: Job? = null
 
-        viewModelScope.launch {
-            val result = repository.sincronizar(user)
+    fun synchronize(user: String) {
+        syncJob?.cancel()
+
+        syncJob = viewModelScope.launch {
+            _state.update { TablesState.Loading }
+
+            val result = repository.synchronize(user)
 
             result
                 .onSuccess { list ->
-                    _state.value = TablesState.Success(list)
+                    _state.update { TablesState.Success(list) }
                 }
                 .onFailure { e ->
-                    _state.value = TablesState.Error(
-                        e.message ?: "Error al sincronizar"
-                    )
+                    _state.update {
+                        TablesState.Error(
+                            e.message ?: "Error al sincronizar"
+                        )
+                    }
                 }
         }
     }
